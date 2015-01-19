@@ -1,0 +1,8 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:stock.external.reception.line,lot:"
+msgid "Lot"
+msgstr "Lote"

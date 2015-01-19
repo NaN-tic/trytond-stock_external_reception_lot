@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="external_reception_line_view_form">
+            <field name="model">stock.external.reception.line</field>
+            <field name="inherit"
+                ref="stock_external_reception.stock_external_reception_line_view_form"/>
+            <field name="name">external_reception_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="external_reception_line_view_list">
+            <field name="model">stock.external.reception.line</field>
+            <field name="inherit"
+                ref="stock_external_reception.stock_external_reception_line_view_list"/>
+            <field name="name">external_reception_line_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="external_reception_line_view_list_sequence">
+            <field name="model">stock.external.reception.line</field>
+            <field name="inherit"
+                ref="stock_external_reception.stock_external_reception_line_view_list_sequence"/>
+            <field name="name">external_reception_line_list_sequence</field>
+        </record>
+    </data>
+</tryton>
