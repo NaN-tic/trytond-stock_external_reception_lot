@@ -10,6 +10,7 @@ __metaclass__ = PoolMeta
 
 class ExternalReceptionLine:
     __name__ = 'stock.external.reception.line'
+    lot_number = fields.Char('Lot Number')
     lot = fields.Many2One('stock.lot', 'Lot', domain=[
             ('product', '=', Eval('product')),
             ], depends=['product'])

@@ -5,3 +5,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "field:stock.external.reception.line,lot:"
 msgid "Lot"
 msgstr "Lot"
+
+msgctxt "field:stock.external.reception.line,lot_number:"
+msgid "Lot Number"
+msgstr "Número lot"

@@ -2,6 +2,11 @@
 <!-- The COPYRIGHT file at the top level of this repository contains the full
      copyright notices and license terms. -->
 <data>
+    <xpath expr="/form/field[@name='description']" position="after">
+        <label name="lot_number"/>
+        <field name="lot_number"/>
+        <newline/>
+    </xpath>
     <xpath expr="/form/field[@name='product']" position="after">
         <label name="lot"/>
         <field name="lot"/>
