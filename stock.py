@@ -17,11 +17,10 @@ class ExternalReceptionLine:
 
     @fields.depends('lot')
     def on_change_product(self):
-        res = super(ExternalReceptionLine, self).on_change_product()
+        super(ExternalReceptionLine, self).on_change_product()
         if self.product and self.lot and self.lot.product == self.product:
-            return res
-        res['lot'] = None
-        return res
+            return
+        self.lot = None
 
     def _get_move(self):
         move = super(ExternalReceptionLine, self)._get_move()
