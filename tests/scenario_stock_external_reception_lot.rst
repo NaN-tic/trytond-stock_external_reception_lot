@@ -99,7 +99,7 @@ product::
     >>> line.product = product
     >>> line.lot = lot1
     >>> line.lot.number
-    u'1'
+    '1'
     >>> line.product = product2
     >>> line.lot is None
     True
@@ -110,7 +110,7 @@ product that requires lot::
     >>> reception.click('done')    # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
-    UserError: ('UserError', (u'Lot is required for move of product "Product".', ''))
+    UserError: ('UserError', ('Lot is required for move of product "Product".', ''))
     >>> line, = reception.lines
     >>> line.lot = lot2
     >>> reception.click('done')
@@ -118,12 +118,12 @@ product that requires lot::
     >>> shipment.party == reception.party
     True
     >>> shipment.state
-    u'done'
+    'done'
     >>> shipment.effective_date == reception.effective_date
     True
     >>> move, = shipment.moves
     >>> move.state
-    u'done'
+    'done'
     >>> move.product == product2
     True
     >>> move.lot == lot2

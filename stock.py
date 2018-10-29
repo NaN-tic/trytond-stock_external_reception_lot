@@ -5,10 +5,9 @@ from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
 __all__ = ['ExternalReceptionLine']
-__metaclass__ = PoolMeta
 
 
-class ExternalReceptionLine:
+class ExternalReceptionLine(metaclass=PoolMeta):
     __name__ = 'stock.external.reception.line'
     lot_number = fields.Char('Lot Number')
     lot = fields.Many2One('stock.lot', 'Lot', domain=[
