@@ -2,32 +2,21 @@
 Stock Shipment External Reception Lot Scenario
 ==============================================
 
-=============
-General Setup
-=============
-
 Imports::
 
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> today = datetime.date.today()
     >>> yesterday = today - relativedelta(days=1)
 
-Create database::
+Install stock_external_reception_lot::
 
-    >>> config = config.set_trytond()
-    >>> config.pool.test = True
-
-Install stock_external_reception_lot Module::
-
-    >>> Module = Model.get('ir.module')
-    >>> modules = Module.find([('name', '=', 'stock_external_reception_lot')])
-    >>> Module.install([x.id for x in modules], config.context)
-    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
+    >>> config = activate_modules('stock_external_reception_lot')
 
 Create company::
 
@@ -65,12 +54,9 @@ Create two products that require lot::
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('20')
-    >>> template.cost_price = Decimal('8')
     >>> template.lot_required.extend(lot_types)
     >>> template.save()
-    >>> product = Product()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
     >>> product2 = Product()
     >>> product2.template = template
     >>> product2.save()
@@ -121,7 +107,7 @@ product::
 Required lot error is raised if lot is not supplied in reception line for a
 product that requires lot::
 
-    >>> reception.click('done')
+    >>> reception.click('done')    # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
     UserError: ('UserError', (u'Lot is required for move of product "Product".', ''))
