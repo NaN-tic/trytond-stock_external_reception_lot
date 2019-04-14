@@ -110,7 +110,7 @@ product that requires lot::
     >>> reception.click('done')    # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
-    UserError: ('UserError', ('Lot is required for move of product "Product".', ''))
+    trytond.model.modelstorage.RequiredValidationError: ('UserError', ('To move product "Product" you must provide a stock lot.', ''))
     >>> line, = reception.lines
     >>> line.lot = lot2
     >>> reception.click('done')
