@@ -43,29 +43,30 @@ Create customer::
 
 Create two products that require lot::
 
-    >>> LotType = Model.get('stock.lot.type')
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
-    >>> lot_types = LotType.find([])
-    >>> template = ProductTemplate()
-    >>> template.name = 'Product'
-    >>> template.default_uom = unit
-    >>> template.type = 'goods'
-    >>> template.list_price = Decimal('20')
-    >>> template.lot_required.extend(lot_types)
-    >>> template.save()
-    >>> product, = template.products
-    >>> product2 = Product()
-    >>> product2.template = template
-    >>> product2.save()
+    >>> template1 = ProductTemplate()
+    >>> template1.name = 'Product'
+    >>> template1.default_uom = unit
+    >>> template1.type = 'goods'
+    >>> template1.list_price = Decimal('20')
+    >>> template1.lot_required = ['storage']
+    >>> template1.save()
+    >>> product1, = template1.products
+    >>> template2 = ProductTemplate()
+    >>> template2.name = 'Product'
+    >>> template2.default_uom = unit
+    >>> template2.type = 'goods'
+    >>> template2.list_price = Decimal('20')
+    >>> template2.lot_required = ['storage']
+    >>> template2.save()
+    >>> product2, = template2.products
 
 Get stock locations::
 
     >>> Location = Model.get('stock.location')
-    >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
-    >>> customer_loc, = Location.find([('code', '=', 'CUS')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
 
 Recieve products from customer::
@@ -88,7 +89,7 @@ product::
     >>> Reception = Model.get('stock.external.reception')
     >>> lot1 = Lot()
     >>> lot1.number = '1'
-    >>> lot1.product = product
+    >>> lot1.product = product1
     >>> lot1.save()
     >>> lot2 = Lot()
     >>> lot2.number = '2'
@@ -96,7 +97,7 @@ product::
     >>> lot2.save()
     >>> reception = Reception(reception.id)
     >>> line, = reception.lines
-    >>> line.product = product
+    >>> line.product = product1
     >>> line.lot = lot1
     >>> line.lot.number
     '1'
