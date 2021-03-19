@@ -30,7 +30,6 @@ Create stock user::
     >>> stock_user = User()
     >>> stock_user.name = 'Stock'
     >>> stock_user.login = 'stock'
-    >>> stock_user.main_company = company
     >>> stock_group, = Group.find([('name', '=', 'Stock')])
     >>> stock_user.groups.append(stock_group)
     >>> stock_user.save()
