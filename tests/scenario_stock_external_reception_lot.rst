@@ -130,7 +130,7 @@ product that requires lot::
     True
     >>> move.quantity == 1.0
     True
-    >>> move.uom == unit
+    >>> move.unit == unit
     True
     >>> move.from_location == customer.customer_location
     True
