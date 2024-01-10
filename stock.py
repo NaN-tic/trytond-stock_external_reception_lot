@@ -12,7 +12,7 @@ class ExternalReceptionLine(metaclass=PoolMeta):
     lot_number = fields.Char('Lot Number')
     lot = fields.Many2One('stock.lot', 'Lot', domain=[
             ('product', '=', Eval('product')),
-            ], depends=['product'])
+            ])
 
     @fields.depends('lot')
     def on_change_product(self):
